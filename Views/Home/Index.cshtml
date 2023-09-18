@@ -1,0 +1,44 @@
+﻿@using Demo.Models;
+@model List<Category>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <title>Trang View đầu tiên</title>
+</head>
+<body>
+    <form asp-action="Process">
+        CateID : <input type="number" name="cateID"/>
+        <br />
+        CateName : <input type="text" name="cateName" />
+        <br />
+        <input type="submit" value="Add" name="action"/>
+        <input type="submit" value="Update" name="action" />
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>CategoryID</td>
+                <td>CategoryName</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sp in Model)
+            {
+                <tr>
+                    <td>@sp.CategoryId</td>
+                    <td>@sp.CategoryName</td>
+                    <td><a asp-action="Delete" asp-route-id="@sp.CategoryId">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+        
+    </ol>
+
+</body>
+</html>
